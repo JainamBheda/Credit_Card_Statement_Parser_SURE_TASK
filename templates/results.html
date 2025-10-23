@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extraction Results</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        h1, h2 { color: #333; }
+        table { border-collapse: collapse; width: 600px; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background: #f9f9f9; }
+        .error { color: red; font-weight: bold; }
+        a { color: #007bff; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Extraction Results</h1>
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+
+    {% if data %}
+        <h2>File: {{ filename }}</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Extracted Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for key, value in data.items() %}
+                <tr>
+                    <td><strong>{{ key }}</strong></td>
+                    <td>{{ value }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+
+    <br>
+    <a href="/">Upload another file</a>
+</body>
+</html>
